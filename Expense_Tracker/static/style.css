@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 32px;
+    color: #243b55;
+    margin-bottom: 10px;
+}
+
+.container > p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.dashboard {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.card {
+    flex: 1;
+    padding: 30px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+.card h2 {
+    font-size: 28px;
+}
+
+.balance {
+    border-left: 5px solid #4263eb;
+}
+
+.income {
+    border-left: 5px solid #20a464;
+}
+
+.expense {
+    border-left: 5px solid #e74c3c;
+}
+
+.transaction {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.transaction h2 {
+    margin-bottom: 20px;
+    color: #243b55;
+}
+
+.transaction p {
+    color: #888;
+}
+.add-expense {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.add-expense h2 {
+    color: #243b55;
+    margin-bottom: 25px;
+}
+
+.add-expense form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.add-expense input,
+.add-expense select {
+    flex: 1;
+    min-width: 180px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.add-expense button {
+    padding: 13px 25px;
+    background: #4263eb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.add-expense button:hover {
+    background: #304fc5;
+}

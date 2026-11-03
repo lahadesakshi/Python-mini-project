@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Expense Tracker</h1>
+        <p>Manage your income and expenses easily.</p>
+
+        <!-- Dashboard -->
+        <div class="dashboard">
+
+            <div class="card balance">
+                <h3>Total Balance</h3>
+                <h2>₹ {{ "%.2f"|format(total_balance) }}</h2>
+            </div>
+
+            <div class="card income">
+                <h3>Total Income</h3>
+                <h2>₹ {{ "%.2f"|format(total_income) }}</h2>
+            </div>
+
+            <div class="card expense">
+                <h3>Total Expense</h3>
+                <h2>₹ {{ "%.2f"|format(total_expense) }}</h2>
+            </div>
+
+        </div>
+
+        <!-- Add Transaction -->
+        <div class="add-expense">
+
+            <h2>Add New Transaction</h2>
+
+            <form method="POST" action="/">
+
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Transaction Title"
+                    required
+                >
+
+                <input
+                    type="number"
+                    name="amount"
+                    placeholder="Amount"
+                    min="0.01"
+                    step="0.01"
+                    required
+                >
+
+                <select name="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+
+                <input
+                    type="date"
+                    name="date"
+                    required
+                >
+
+                <button type="submit">Add Transaction</button>
+
+            </form>
+
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="transaction">
+
+            <h2>Recent Transactions</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense[1] }}</td>
+                        <td>₹ {{ "%.2f"|format(expense[2]) }}</td>
+                        <td>
+                            {% if expense[3] == 'Income' %}
+                                <span style="color: green;">Income</span>
+                            {% else %}
+                                <span style="color: red;">Expense</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ expense[4] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% if not expenses %}
+                <p>No transactions yet.</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+
